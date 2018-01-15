@@ -1,10 +1,37 @@
+/* colors 
+dark-salmon: #b64f33, rgb(182, 79, 51)
+chocolate-salmon: #36180F, rgb(54, 24, 15)
+*/
+
+
 body {
-  background-color: lightsalmon;
+  background-color: rgba(182, 79, 51, 0.1);
   font-size: 16px;
+  font-family: sans-serif;
 }
 main {
   padding: 1em 10%;
 }
+h1, h2, h3 {
+  font-family: serif;
+  color: #36180F;
+}
 h1 {
   font-size: 36px;
+  
+}
+h2 {
+  font-size: 26px;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+h3 {
+  font-size: 20px;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+li {
+  list-style-type: circle;
+  list-style-position: inside;
+  margin-top: 0.7em;
 }
