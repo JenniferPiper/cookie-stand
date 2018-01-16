@@ -1,5 +1,5 @@
 'use strict';
- var hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm' ];
+var hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm' ];
 
 /*
   for each store location: 
@@ -26,14 +26,29 @@ var firstAndPike = {
   maxCust: 65,
   avgCookies: 6.3,
   render: function() {
-    var ulEl = document.getElementById('first');
-    for(var i = 0; i < hours.length; i++){
-      var cookiesPerHour = Math.round(this.avgCookies * custPerHour( this.minCust , this.maxCust ));
+    var ulEl = document.getElementById('first-and-pike');
+    for( var i = 0; i < hours.length; i++ ){
+      var cookiesPerHour = Math.round( this.avgCookies * custPerHour( this.minCust , this.maxCust ) );
       var liEl =  document.createElement( 'li' );
       liEl.textContent = hours[i] + ': ' + cookiesPerHour + ' cookies';
       ulEl.appendChild( liEl );
     }
   }
 };
+var seatacAirport = {
+  minCust: 3,
+  maxCust: 24,
+  avgCookies: 1.2,
+  render: function() {
+    var ulEl = document.getElementById('seatac');
+    for( var i = 0; i < hours.length; i++ ) {
+      var cookiesPerHour = Math.round( this.avgCookies * custPerHour( this.minCust , this.maxCust ) );
+      var liEl = document.createElement( 'li' );
+      liEl.textContent = hours[i] + ': ' + cookiesPerHour + ' cookies';
+      ulEl.appendChild( liEl);
+    }
+  }
+};
 
 firstAndPike.render();
+seatacAirport.render();
