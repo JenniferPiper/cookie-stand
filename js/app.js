@@ -1,7 +1,7 @@
 'use strict';
 
 var locationsTable = document.getElementById('store-locations');
-var tableHeadings = ['Location Name','6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm'];
+var tableHeadings = ['Location Name','6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm', 'Total'];
 /*
   for each store location: 
     -make an object literal
@@ -41,15 +41,21 @@ function StoreLocation(locationName, minCust, maxCust, avgCookies) {
 StoreLocation.prototype.render = function() {
   var trEl = document.createElement('tr');
   var tdEl = document.createElement('td');
+  var totalCookies = 0;
   tdEl.textContent = this.locationName;
   trEl.appendChild(tdEl);
-  //start at tableHeadings[1] to skip the Location Name and iterate for each hour heading.
-  for( var i = 1; i < tableHeadings.length; i++ ){
+
+  //start at tableHeadings[1] to skip the Location Name and iterate for each hour heading. End at tableHeadings.length - 1 to leave space for total.
+  for( var i = 1; i < tableHeadings.length - 1; i++ ){
     var cookiesPerHour = Math.round( this.avgCookies * custPerHour( this.minCust , this.maxCust ) );
     tdEl = document.createElement('td');
     tdEl.textContent = cookiesPerHour;
     trEl.appendChild( tdEl );
+    totalCookies += cookiesPerHour;
   }
+  tdEl = document.createElement('td');
+  tdEl.textContent = totalCookies;
+  trEl.appendChild(tdEl);
 
   locationsTable.appendChild(trEl);
 };
