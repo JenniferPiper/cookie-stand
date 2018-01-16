@@ -1,0 +1,70 @@
+/* colors 
+medium-salmon: #b64f33, rgb(182, 79, 51)
+dark-salmon: #692513
+rust: #833925;
+chocolate-salmon(almost black): #36180F, rgb(54, 24, 15)
+wasabi: #8AC24A
+*/
+
+
+body {
+  background-color: rgba(182, 79, 51, 0.1);
+  font-size: 16px;
+  font-family: Georgia, serif;
+  color: #833925;
+}
+main{
+  padding: 1.8rem 10%;
+}
+.page-header, .page-footer{
+  padding: 1rem 10%;
+}
+.page-header {
+  box-shadow:  0 0 10px lightsalmon;
+  overflow: auto;
+}
+.page-header a {
+  text-decoration: none;
+}
+
+.page-footer {
+  overflow: auto;
+  padding-bottom: 2rem;
+  border-top: 1px solid salmon;
+
+}
+.logo {
+  max-width: 300px;
+  display: block;
+  margin: 0 auto;
+}
+.site-title {
+  display: block;
+  text-align: center;
+  margin: 0.5em auto;
+  font-family: 'Chelsea Market', serif;
+}
+h1, h2, h3 {
+  color: #692513;
+}
+h1 {
+  font-size: 30px;
+  
+}
+h2 {
+  font-size: 26px;
+  /* margin-top: 0.5em; */
+  margin-bottom: 1em;
+}
+h3 {
+  font-size: 20px;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+li {
+  list-style-type: circle;
+  list-style-position: inside;
+  margin-top: 0.7em;
+  font-family: Helvetica, sans-serif;
+  color:#b64f33;
+}
