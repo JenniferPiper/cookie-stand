@@ -68,3 +68,9 @@ li {
   font-family: Helvetica, sans-serif;
   color:#b64f33;
 }
+table {
+}
+td, th {
+  padding: 10px;
+  border: 1px solid salmon;
+}

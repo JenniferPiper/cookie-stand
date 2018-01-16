@@ -1,6 +1,8 @@
 'use strict';
-var hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm' ];
 
+var locationsTable = document.getElementById('store-locations');
+var hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm' ];
+var tableHeadings = ['Location Name', 'Min Customers', 'Max Customers', 'Average Cookies per Hour'];
 /*
   for each store location: 
     -make an object literal
@@ -20,11 +22,54 @@ calculate customers per hour. This is almost identical to getRandomIntInclusive(
 function custPerHour( min, max ) {
   return Math.floor(Math.random() * ( max - min + 1 )) + min;
 }
+function makeHeaderRow() {
+  console.log('makeHeaderRow');
+  var trEl = document.createElement('tr');
+  var thEl;
+  for (var i = 0; i < tableHeadings.length; i++){
+    thEl = document.createElement('th');
+    thEl.textContent = tableHeadings[i];
+    trEl.appendChild(thEl);
+  }
+  locationsTable.appendChild(trEl);
+}
 
+function StoreLocation(locationName, minCust, maxCust, avgCookies) {
+  this.locationName = locationName;
+  this.minCust = minCust;
+  this.maxCust = maxCust;
+  this.avgCookies = avgCookies;
+}
+StoreLocation.prototype.render = function() {
+  var trEl = document.createElement('tr');
+  var tdEl = document.createElement('td');
+  tdEl.textContent = this.locationName;
+  trEl.appendChild(tdEl);
+
+  tdEl = document.createElement('td');
+  tdEl.textContent = this.minCust;
+  trEl.appendChild(tdEl);
+
+  tdEl = document.createElement('td');
+  tdEl.textContent = this.maxCust;
+  trEl.appendChild(tdEl);
+
+  tdEl = document.createElement('td');
+  tdEl.textContent = this.avgCookies;
+  trEl.appendChild(tdEl);
+
+  locationsTable.appendChild(trEl);
+};
+
+var firstAndPike = new StoreLocation('First & Pike', 23, 65, 6.3);
+makeHeaderRow();
+firstAndPike.render();
+/*
 var firstAndPike = {
   minCust: 23,
   maxCust: 65,
   avgCookies: 6.3,
+  totalCookies: 0,
   render: function() {
     var ulEl = document.getElementById('first-and-pike');
     for( var i = 0; i < hours.length; i++ ){
@@ -35,6 +80,7 @@ var firstAndPike = {
     }
   }
 };
+
 var seatacAirport = {
   minCust: 3,
   maxCust: 24,
@@ -94,9 +140,9 @@ var alki = {
     }
   }
 };
-
-firstAndPike.render();
-seatacAirport.render();
-seattleCenter.render();
-capitolHill.render();
-alki.render();
+*/
+//firstAndPike.render();
+// seatacAirport.render();
+// seattleCenter.render();
+// capitolHill.render();
+// alki.render();
