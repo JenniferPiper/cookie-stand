@@ -80,8 +80,23 @@ var capitolHill = {
   }
 };
 
+var alki = {
+  minCust: 2,
+  maxCust: 16,
+  avgCookies: 4.6,
+  render: function() {
+    var ulEl = document.getElementById('alki');
+    for( var i = 0; i < hours.length; i++ ) {
+      var cookiesPerHour = Math.round( this.avgCookies * custPerHour( this.minCust , this.maxCust ) );
+      var liEl = document.createElement( 'li' );
+      liEl.textContent = hours[i] + ': ' + cookiesPerHour + ' cookies';
+      ulEl.appendChild( liEl );
+    }
+  }
+};
 
 firstAndPike.render();
 seatacAirport.render();
 seattleCenter.render();
 capitolHill.render();
+alki.render();
