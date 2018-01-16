@@ -45,10 +45,26 @@ var seatacAirport = {
       var cookiesPerHour = Math.round( this.avgCookies * custPerHour( this.minCust , this.maxCust ) );
       var liEl = document.createElement( 'li' );
       liEl.textContent = hours[i] + ': ' + cookiesPerHour + ' cookies';
-      ulEl.appendChild( liEl);
+      ulEl.appendChild( liEl );
+    }
+  }
+};
+
+var seattleCenter = {
+  minCust: 11,
+  maxCust: 38,
+  avgCookies: 3.7,
+  render: function() {
+    var ulEl = document.getElementById('seattle-center');
+    for( var i = 0; i < hours.length; i++ ) {
+      var cookiesPerHour = Math.round( this.avgCookies * custPerHour( this.minCust , this.maxCust ) );
+      var liEl = document.createElement( 'li' );
+      liEl.textContent = hours[i] + ': ' + cookiesPerHour + ' cookies';
+      ulEl.appendChild( liEl );
     }
   }
 };
 
 firstAndPike.render();
 seatacAirport.render();
+seattleCenter.render();
