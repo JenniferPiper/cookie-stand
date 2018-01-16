@@ -50,10 +50,18 @@ StoreLocation.prototype.render = function() {
     tdEl.textContent = cookiesPerHour;
     trEl.appendChild( tdEl );
   }
-  
+
   locationsTable.appendChild(trEl);
 };
 
 var firstAndPike = new StoreLocation('First & Pike', 23, 65, 6.3);
+var seaTacAirport = new StoreLocation('SeaTac Airport', 3, 24, 1.2);
+var seattleCenter = new StoreLocation('Seattle Center', 11, 38, 3.7);
+var capitolHill = new StoreLocation('Capitol Hill', 20, 38, 2.3);
+var alki = new StoreLocation('Alki', 2, 16, 4.6);
 makeHeaderRow();
 firstAndPike.render();
+seaTacAirport.render();
+seattleCenter.render();
+capitolHill.render();
+alki.render();
