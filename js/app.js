@@ -65,6 +65,23 @@ var seattleCenter = {
   }
 };
 
+var capitolHill = {
+  minCust: 20,
+  maxCust: 38,
+  avgCookies: 2.3,
+  render: function() {
+    var ulEl = document.getElementById('capitol-hill');
+    for( var i = 0; i < hours.length; i++ ) {
+      var cookiesPerHour = Math.round( this.avgCookies * custPerHour( this.minCust , this.maxCust ) );
+      var liEl = document.createElement( 'li' );
+      liEl.textContent = hours[i] + ': ' + cookiesPerHour + ' cookies';
+      ulEl.appendChild( liEl );
+    }
+  }
+};
+
+
 firstAndPike.render();
 seatacAirport.render();
 seattleCenter.render();
+capitolHill.render();
