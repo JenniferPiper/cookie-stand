@@ -1,7 +1,6 @@
 'use strict';
 
 var locationsTable = document.getElementById('store-locations');
-var hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm' ];
 var tableHeadings = ['Location Name','6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm'];
 /*
   for each store location: 
@@ -44,7 +43,8 @@ StoreLocation.prototype.render = function() {
   var tdEl = document.createElement('td');
   tdEl.textContent = this.locationName;
   trEl.appendChild(tdEl);
-  for( var i = 0; i < hours.length; i++ ){
+  //start at tableHeadings[1] to skip the Location Name and iterate for each hour heading.
+  for( var i = 1; i < tableHeadings.length; i++ ){
     var cookiesPerHour = Math.round( this.avgCookies * custPerHour( this.minCust , this.maxCust ) );
     tdEl = document.createElement('td');
     tdEl.textContent = cookiesPerHour;
@@ -59,6 +59,7 @@ var seaTacAirport = new StoreLocation('SeaTac Airport', 3, 24, 1.2);
 var seattleCenter = new StoreLocation('Seattle Center', 11, 38, 3.7);
 var capitolHill = new StoreLocation('Capitol Hill', 20, 38, 2.3);
 var alki = new StoreLocation('Alki', 2, 16, 4.6);
+
 makeHeaderRow();
 firstAndPike.render();
 seaTacAirport.render();
