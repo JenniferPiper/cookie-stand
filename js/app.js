@@ -1,6 +1,7 @@
 'use strict';
-var hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm' ];
 
+var locationsTable = document.getElementById('store-locations');
+var tableHeadings = ['Location Name','6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm', 'Total'];
 /*
   for each store location: 
     -make an object literal
@@ -20,83 +21,54 @@ calculate customers per hour. This is almost identical to getRandomIntInclusive(
 function custPerHour( min, max ) {
   return Math.floor(Math.random() * ( max - min + 1 )) + min;
 }
+function makeHeaderRow() {
+  var trEl = document.createElement('tr');
+  var thEl;
+  for (var i = 0; i < tableHeadings.length; i++){
+    thEl = document.createElement('th');
+    thEl.textContent = tableHeadings[i];
+    trEl.appendChild(thEl);
+  }
+  locationsTable.appendChild(trEl);
+}
 
-var firstAndPike = {
-  minCust: 23,
-  maxCust: 65,
-  avgCookies: 6.3,
-  render: function() {
-    var ulEl = document.getElementById('first-and-pike');
-    for( var i = 0; i < hours.length; i++ ){
-      var cookiesPerHour = Math.round( this.avgCookies * custPerHour( this.minCust , this.maxCust ) );
-      var liEl =  document.createElement( 'li' );
-      liEl.textContent = hours[i] + ': ' + cookiesPerHour + ' cookies';
-      ulEl.appendChild( liEl );
-    }
-  }
-};
-var seatacAirport = {
-  minCust: 3,
-  maxCust: 24,
-  avgCookies: 1.2,
-  render: function() {
-    var ulEl = document.getElementById('seatac');
-    for( var i = 0; i < hours.length; i++ ) {
-      var cookiesPerHour = Math.round( this.avgCookies * custPerHour( this.minCust , this.maxCust ) );
-      var liEl = document.createElement( 'li' );
-      liEl.textContent = hours[i] + ': ' + cookiesPerHour + ' cookies';
-      ulEl.appendChild( liEl );
-    }
-  }
-};
+function StoreLocation(locationName, minCust, maxCust, avgCookies) {
+  this.locationName = locationName;
+  this.minCust = minCust;
+  this.maxCust = maxCust;
+  this.avgCookies = avgCookies;
+}
+StoreLocation.prototype.render = function() {
+  var trEl = document.createElement('tr');
+  var tdEl = document.createElement('td');
+  var totalCookies = 0;
+  tdEl.textContent = this.locationName;
+  trEl.appendChild(tdEl);
 
-var seattleCenter = {
-  minCust: 11,
-  maxCust: 38,
-  avgCookies: 3.7,
-  render: function() {
-    var ulEl = document.getElementById('seattle-center');
-    for( var i = 0; i < hours.length; i++ ) {
-      var cookiesPerHour = Math.round( this.avgCookies * custPerHour( this.minCust , this.maxCust ) );
-      var liEl = document.createElement( 'li' );
-      liEl.textContent = hours[i] + ': ' + cookiesPerHour + ' cookies';
-      ulEl.appendChild( liEl );
-    }
+  //start at tableHeadings[1] to skip the Location Name and iterate for each hour heading. End at tableHeadings.length - 1 to leave space for total.
+  for( var i = 1; i < tableHeadings.length - 1; i++ ){
+    var cookiesPerHour = Math.round( this.avgCookies * custPerHour( this.minCust , this.maxCust ) );
+    tdEl = document.createElement('td');
+    tdEl.textContent = cookiesPerHour;
+    trEl.appendChild( tdEl );
+    totalCookies += cookiesPerHour;
   }
+  tdEl = document.createElement('td');
+  tdEl.textContent = totalCookies;
+  trEl.appendChild(tdEl);
+
+  locationsTable.appendChild(trEl);
 };
 
-var capitolHill = {
-  minCust: 20,
-  maxCust: 38,
-  avgCookies: 2.3,
-  render: function() {
-    var ulEl = document.getElementById('capitol-hill');
-    for( var i = 0; i < hours.length; i++ ) {
-      var cookiesPerHour = Math.round( this.avgCookies * custPerHour( this.minCust , this.maxCust ) );
-      var liEl = document.createElement( 'li' );
-      liEl.textContent = hours[i] + ': ' + cookiesPerHour + ' cookies';
-      ulEl.appendChild( liEl );
-    }
-  }
-};
+var firstAndPike = new StoreLocation('First & Pike', 23, 65, 6.3);
+var seaTacAirport = new StoreLocation('SeaTac Airport', 3, 24, 1.2);
+var seattleCenter = new StoreLocation('Seattle Center', 11, 38, 3.7);
+var capitolHill = new StoreLocation('Capitol Hill', 20, 38, 2.3);
+var alki = new StoreLocation('Alki', 2, 16, 4.6);
 
-var alki = {
-  minCust: 2,
-  maxCust: 16,
-  avgCookies: 4.6,
-  render: function() {
-    var ulEl = document.getElementById('alki');
-    for( var i = 0; i < hours.length; i++ ) {
-      var cookiesPerHour = Math.round( this.avgCookies * custPerHour( this.minCust , this.maxCust ) );
-      var liEl = document.createElement( 'li' );
-      liEl.textContent = hours[i] + ': ' + cookiesPerHour + ' cookies';
-      ulEl.appendChild( liEl );
-    }
-  }
-};
-
+makeHeaderRow();
 firstAndPike.render();
-seatacAirport.render();
+seaTacAirport.render();
 seattleCenter.render();
 capitolHill.render();
 alki.render();
