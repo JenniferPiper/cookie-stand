@@ -3,7 +3,7 @@
 var allLocations = [];
 var locationsTable = document.getElementById('store-locations');
 var tableHeadings = ['Location Name','6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm', 'Total'];
-
+var addLocationForm = document.getElementById('form-add-location');
 /*
   for each store location: 
     -make an object literal
@@ -63,11 +63,25 @@ StoreLocation.prototype.render = function() {
   locationsTable.appendChild(trEl);
 };
 
+function addNewLocation(event) {
+  event.preventDefault();
+  var newLocation = event.target.locationName.value;
+  var newMinCust = event.target.minCust.value;
+  var newMaxCust = event.target.maxCust.value;
+  var newAvgCookies = event.target.avgCookies.value;
+
+  new StoreLocation(newLocation, newMinCust, newMaxCust, newAvgCookies);
+  locationsTable.innerHTML = '';
+  renderAllLocations();
+}
+
 new StoreLocation('First & Pike', 23, 65, 6.3);
 new StoreLocation('SeaTac Airport', 3, 24, 1.2);
 new StoreLocation('Seattle Center', 11, 38, 3.7);
 new StoreLocation('Capitol Hill', 20, 38, 2.3);
 new StoreLocation('Alki', 2, 16, 4.6);
+
+addLocationForm.addEventListener('submit', addNewLocation);
 
 function renderAllLocations() {
   for(var i in allLocations) {
