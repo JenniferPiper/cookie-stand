@@ -69,7 +69,7 @@ li {
   color:#b64f33;
 }
 
-td, th {
+td, th, button {
   padding: 10px;
   border: 1px solid salmon;
 }
@@ -94,4 +94,11 @@ label {
 input {
   padding: 0.5em;
   margin-bottom: 0.5em;
+}
+
+button {
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9em;
+  margin-top: 1em;
 }
