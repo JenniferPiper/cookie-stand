@@ -74,7 +74,24 @@ td, th {
   border: 1px solid salmon;
 }
 
-th {
-  color: #36180F;
+th, legend {
+  color: #692513;
   font-size: 1.1em;
+}
+
+fieldset {
+  border: 1px solid salmon;
+  margin: 2em 0;
+  padding: 1em;
+}
+
+label {
+  display: inline-block;
+  margin-bottom: 0.5em;
+  margin-right: 1em;
+}
+
+input {
+  padding: 0.5em;
+  margin-bottom: 0.5em;
 }
