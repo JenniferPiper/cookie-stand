@@ -77,9 +77,9 @@ StoreLocation.prototype.render = function() {
 function addNewLocation(event) {
   event.preventDefault();
   var newLocation = event.target.locationName.value;
-  var newMinCust = event.target.minCust.value;
-  var newMaxCust = event.target.maxCust.value;
-  var newAvgCookies = event.target.avgCookies.value;
+  var newMinCust = parseInt(event.target.minCust.value);
+  var newMaxCust = parseInt(event.target.maxCust.value);
+  var newAvgCookies = parseFloat(event.target.avgCookies.value);
 
   new StoreLocation(newLocation, newMinCust, newMaxCust, newAvgCookies);
   locationsTable.innerHTML = '';
