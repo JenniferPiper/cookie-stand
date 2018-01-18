@@ -68,6 +68,22 @@ li {
   font-family: Helvetica, sans-serif;
   color:#b64f33;
 }
+table {
+  border: 2px solid #692513;
+}
+tr:first-of-type {
+  border-bottom: 2px solid #692513;
+}
+tr:last-of-type {
+  border-top: 2px solid #692513;
+}
+
+td:first-of-type, th:first-of-type {
+  border-right: 2px solid #692513;
+}
+td:last-of-type, th:last-of-type {
+  border-left: 2px solid #692513;
+}
 
 td, th, button {
   padding: 10px;
