@@ -19,6 +19,25 @@
 <table id="store-locations">
 
 </table>
+<form id="form-add-location">
+  <fieldset>
+    <legend>Add a Store Location</legend>
+
+    <label for="locationName">Location Name:</label>
+    <input name="locationName" type="text"><br>
+
+    <label for="minCust">Minimum Customers per Hour:</label>
+    <input name="minCust" type="number"><br>
+
+    <label for="maxCust">Maximum Customers per Hour:</label>
+    <input name="maxCust" type="number"><br>
+
+    <label for="avgCookies">Average Cookies per Sale:</label>
+    <input name="avgCookies" type="number" step="0.1"><br>
+
+    <button id="button-add-store">Add Location</button>
+  </fieldset>
+</form>
     </main>
     <script type="text/javascript" src="js/app.js"></script>
     <footer class="page-footer">

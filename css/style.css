@@ -68,13 +68,53 @@ li {
   font-family: Helvetica, sans-serif;
   color:#b64f33;
 }
+table {
+  border: 2px solid #692513;
+}
+tr:first-of-type {
+  border-bottom: 2px solid #692513;
+}
+tr:last-of-type {
+  border-top: 2px solid #692513;
+}
 
-td, th {
+td:first-of-type, th:first-of-type {
+  border-right: 2px solid #692513;
+}
+td:last-of-type, th:last-of-type {
+  border-left: 2px solid #692513;
+}
+
+td, th, button {
   padding: 10px;
   border: 1px solid salmon;
 }
 
-th {
-  color: #36180F;
+th, legend {
+  color: #692513;
   font-size: 1.1em;
+}
+
+fieldset {
+  border: 1px solid salmon;
+  margin: 2em 0;
+  padding: 1em;
+}
+
+label {
+  display: inline-block;
+  margin-bottom: 0.5em;
+  margin-right: 1em;
+}
+
+input {
+  padding: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+button {
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9em;
+  margin-top: 1em;
 }
