@@ -4,9 +4,11 @@ var allLocations = [];
 var locationsTable = document.getElementById('store-locations');
 var tableHeadings = ['Location Name','6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm', 'Total'];
 var addLocationForm = document.getElementById('form-add-location');
+
+var columnTotals = ['Total Cookies for All Locations'];
+
 /*
-  for each store location: 
-    -make an object literal
+  for each store location:
     -store min hourly customers
     -store max hourly customers
     -store average cookies per sale
@@ -14,7 +16,6 @@ var addLocationForm = document.getElementById('form-add-location');
     -for each hour:
       -calculate and store projected number of cookies purchased
     -store results in an array that is a property of the store location object
-    -display results as <ul>s on the page
   */
 /*
 calculate customers per hour. This is almost identical to getRandomIntInclusive() at https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random , except that here the input arguments are assumed to be integers.
@@ -45,8 +46,10 @@ StoreLocation.prototype.render = function() {
   var trEl = document.createElement('tr');
   var tdEl = document.createElement('td');
   var totalCookies = 0;
+  
   tdEl.textContent = this.locationName;
   trEl.appendChild(tdEl);
+
 
   //start at tableHeadings[1] to skip the Location Name and iterate for each hour heading. End at tableHeadings.length - 1 to leave space for total.
   for( var i = 1; i < tableHeadings.length - 1; i++ ){
@@ -55,12 +58,20 @@ StoreLocation.prototype.render = function() {
     tdEl.textContent = cookiesPerHour;
     trEl.appendChild( tdEl );
     totalCookies += cookiesPerHour;
+    if(columnTotals[i] === undefined){
+      columnTotals[i] = cookiesPerHour;
+    }
+    else {
+      columnTotals[i] += cookiesPerHour;
+    }
+
   }
   tdEl = document.createElement('td');
   tdEl.textContent = totalCookies;
   trEl.appendChild(tdEl);
 
   locationsTable.appendChild(trEl);
+
 };
 
 function addNewLocation(event) {
@@ -72,7 +83,9 @@ function addNewLocation(event) {
 
   new StoreLocation(newLocation, newMinCust, newMaxCust, newAvgCookies);
   locationsTable.innerHTML = '';
+  makeHeaderRow();
   renderAllLocations();
+  makeFooterRow();
 }
 
 new StoreLocation('First & Pike', 23, 65, 6.3);
@@ -88,5 +101,25 @@ function renderAllLocations() {
     allLocations[i].render();
   }
 }
+function makeFooterRow() {
+  var trEl = document.createElement('tr');
+  var tdEl;
+  var totalOfTotals = 0;
+  for(var i in columnTotals) {
+    tdEl = document.createElement('td');
+    tdEl.textContent = columnTotals[i];
+    trEl.appendChild(tdEl);
+    //skip the row title when calculating total of totals
+    if(i > 0) {
+      totalOfTotals += parseInt(columnTotals[i]);
+    }
+  }
+  tdEl = document.createElement('td');
+  tdEl.textContent = totalOfTotals;
+  trEl.appendChild(tdEl);
+
+  locationsTable.appendChild(trEl);
+}
 makeHeaderRow();
 renderAllLocations();
+makeFooterRow();
