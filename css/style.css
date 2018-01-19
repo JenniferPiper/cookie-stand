@@ -6,21 +6,30 @@ chocolate-salmon(almost black): #36180F, rgb(54, 24, 15)
 wasabi: #8AC24A
 */
 
-
+* {
+  box-sizing: border-box;
+}
 body {
   background-color: rgba(182, 79, 51, 0.1);
   font-size: 16px;
   font-family: Georgia, serif;
   color: #833925;
 }
-main{
+section {
   padding: 1.8rem 10%;
+  border-top: 1px solid salmon;
+  width: 100%;
+  overflow: auto;
+  clear: both;
+}
+strong {
+  font-weight: bold;
 }
 .page-header, .page-footer{
   padding: 1rem 10%;
 }
 .page-header {
-  box-shadow:  0 0 10px lightsalmon;
+  /* border-bottom:  1px solid lightsalmon; */
   overflow: auto;
 }
 .page-header a {
@@ -44,6 +53,10 @@ main{
   margin: 0.5em auto;
   font-family: 'Chelsea Market', serif;
 }
+.tagline {
+  text-align: center;
+  font-style: italic;
+}
 h1, h2, h3 {
   color: #692513;
 }
@@ -53,13 +66,22 @@ h1 {
 }
 h2 {
   font-size: 26px;
-  /* margin-top: 0.5em; */
   margin-bottom: 1em;
+  margin-top: 0.5em;
+}
+h2.store-hours {
+  margin-bottom: 0.5em;
 }
 h3 {
   font-size: 20px;
-  margin-top: 1em;
-  margin-bottom: 1em;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+img {
+  max-width: 400px;
+}
+ul {
+  margin-bottom: 1rem;
 }
 li {
   list-style-type: circle;
@@ -68,8 +90,14 @@ li {
   font-family: Helvetica, sans-serif;
   color:#b64f33;
 }
+p {
+  line-height: 1.5;
+}
+.store-info p {
+  line-height: 1.2;
+}
 table {
-  border: 2px solid #692513;
+  border: 2px solid #692513; 
 }
 tr:first-of-type {
   border-bottom: 2px solid #692513;
@@ -117,4 +145,43 @@ button {
   cursor: pointer;
   font-size: 0.9em;
   margin-top: 1em;
+}
+#home-intro img {
+  float: right;
+}
+#family img, 
+#merchandise img {
+  float: left;
+  margin-right: 25px;
+  border-radius: 10px;
+}
+#merchandise img {
+  height: 220px;
+}
+#cookies-how img {
+  margin-left: 25px;
+    float: right;
+    width: auto;
+    height: 160px;
+    border: 3px solid salmon;
+    border-radius: 10px;
+}
+.fancy-text{
+  font-style: italic;
+}
+.store-info {
+  width: 250px;
+  border-left: 2px solid salmon;
+  display: inline-block;
+  padding-left: 15px;
+  padding-bottom: 0.7rem;
+  margin-bottom: 25px;
+}
+
+section:nth-of-type(odd) {
+  background-color: #fff;
+}
+.phone {
+  display: block;
+  margin-top: 5px;
 }
