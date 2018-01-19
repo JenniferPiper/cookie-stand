@@ -9,12 +9,14 @@ wasabi: #8AC24A
 * {
   box-sizing: border-box;
 }
+
 body {
   background-color: rgba(182, 79, 51, 0.1);
   font-size: 16px;
   font-family: Georgia, serif;
   color: #833925;
 }
+
 section {
   padding: 1.8rem 10%;
   border-top: 1px solid salmon;
@@ -22,16 +24,19 @@ section {
   overflow: auto;
   clear: both;
 }
-strong {
-  font-weight: bold;
+
+section:nth-of-type(odd) {
+  background-color: #fff;
 }
+
 .page-header, .page-footer{
   padding: 1rem 10%;
 }
+
 .page-header {
-  /* border-bottom:  1px solid lightsalmon; */
   overflow: auto;
 }
+
 .page-header a {
   text-decoration: none;
 }
@@ -40,49 +45,62 @@ strong {
   overflow: auto;
   padding-bottom: 2rem;
   border-top: 1px solid salmon;
-
 }
+
 .logo {
   max-width: 300px;
   display: block;
   margin: 0 auto;
 }
+
 .site-title {
   display: block;
   text-align: center;
   margin: 0.5em auto;
   font-family: 'Chelsea Market', serif;
 }
+
 .tagline {
   text-align: center;
   font-style: italic;
 }
+
 h1, h2, h3 {
   color: #692513;
 }
+
 h1 {
   font-size: 30px;
-  
 }
+
 h2 {
   font-size: 26px;
   margin-bottom: 1em;
   margin-top: 0.5em;
 }
+
 h2.store-hours {
   margin-bottom: 0.5em;
 }
+
 h3 {
   font-size: 20px;
   margin-top: 0.5em;
   margin-bottom: 0.5em;
 }
+
+strong {
+  font-weight: bold;
+}
+
 img {
   max-width: 400px;
 }
+
 ul {
   margin-bottom: 1rem;
 }
+
 li {
   list-style-type: circle;
   list-style-position: inside;
@@ -90,18 +108,31 @@ li {
   font-family: Helvetica, sans-serif;
   color:#b64f33;
 }
+
 p {
   line-height: 1.5;
 }
+
+a {
+  color: #b64f33;
+}
+
+a:hover, a:focus {
+  color: salmon;
+}
+
 .store-info p {
   line-height: 1.2;
 }
+
 table {
   border: 2px solid #692513; 
 }
+
 tr:first-of-type {
   border-bottom: 2px solid #692513;
 }
+
 tr:last-of-type {
   border-top: 2px solid #692513;
 }
@@ -109,6 +140,7 @@ tr:last-of-type {
 td:first-of-type, th:first-of-type {
   border-right: 2px solid #692513;
 }
+
 td:last-of-type, th:last-of-type {
   border-left: 2px solid #692513;
 }
@@ -146,18 +178,22 @@ button {
   font-size: 0.9em;
   margin-top: 1em;
 }
+
 #home-intro img {
   float: right;
 }
+
 #family img, 
 #merchandise img {
   float: left;
   margin-right: 25px;
   border-radius: 10px;
 }
+
 #merchandise img {
   height: 220px;
 }
+
 #cookies-how img {
   margin-left: 25px;
     float: right;
@@ -166,9 +202,11 @@ button {
     border: 3px solid salmon;
     border-radius: 10px;
 }
+
 .fancy-text{
   font-style: italic;
 }
+
 .store-info {
   width: 250px;
   border-left: 2px solid salmon;
@@ -178,9 +216,6 @@ button {
   margin-bottom: 25px;
 }
 
-section:nth-of-type(odd) {
-  background-color: #fff;
-}
 .phone {
   display: block;
   margin-top: 5px;
