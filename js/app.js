@@ -17,23 +17,6 @@ var columnTotals = ['Total Cookies for All Locations'];
       -calculate and store projected number of cookies purchased
     -store results in an array that is a property of the store location object
   */
-/*
-calculate customers per hour. This is almost identical to getRandomIntInclusive() at https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random , except that here the input arguments are assumed to be integers.
-*/
-
-function custPerHour( min, max ) {
-  return Math.floor(Math.random() * ( max - min + 1 )) + min;
-}
-function makeHeaderRow() {
-  var trEl = document.createElement('tr');
-  var thEl;
-  for (var i = 0; i < tableHeadings.length; i++){
-    thEl = document.createElement('th');
-    thEl.textContent = tableHeadings[i];
-    trEl.appendChild(thEl);
-  }
-  locationsTable.appendChild(trEl);
-}
 
 function StoreLocation(locationName, minCust, maxCust, avgCookies) {
   this.locationName = locationName;
@@ -46,7 +29,7 @@ StoreLocation.prototype.render = function() {
   var trEl = document.createElement('tr');
   var tdEl = document.createElement('td');
   var totalCookies = 0;
-  
+
   tdEl.textContent = this.locationName;
   trEl.appendChild(tdEl);
 
@@ -73,6 +56,23 @@ StoreLocation.prototype.render = function() {
   locationsTable.appendChild(trEl);
 
 };
+
+/*
+calculate customers per hour. This is almost identical to getRandomIntInclusive() at https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random , except that here the input arguments are assumed to be integers.
+*/
+function custPerHour( min, max ) {
+  return Math.floor(Math.random() * ( max - min + 1 )) + min;
+}
+function makeHeaderRow() {
+  var trEl = document.createElement('tr');
+  var thEl;
+  for (var i = 0; i < tableHeadings.length; i++){
+    thEl = document.createElement('th');
+    thEl.textContent = tableHeadings[i];
+    trEl.appendChild(thEl);
+  }
+  locationsTable.appendChild(trEl);
+}
 
 function addNewLocation(event) {
   event.preventDefault();
