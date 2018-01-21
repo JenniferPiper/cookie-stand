@@ -139,6 +139,7 @@ tr:last-of-type {
 
 td:first-of-type, th:first-of-type {
   border-right: 2px solid #692513;
+  text-align: left;
 }
 
 td:last-of-type, th:last-of-type {
@@ -148,6 +149,9 @@ td:last-of-type, th:last-of-type {
 td, th, button {
   padding: 10px;
   border: 1px solid salmon;
+}
+td {
+  text-align: right;
 }
 
 th, legend {
